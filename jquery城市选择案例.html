@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	        select {
+	            width: 200px;
+	            background-color: teal;
+	            height: 200px;
+	            font-size: 20px;
+	        }
+	
+	        .btn-box {
+	            width: 30px;
+	            display: inline-block;
+	            vertical-align: top;
+	        }
+	    </style>
+	    <!--  第一步引入jQuery文件 -->
+	    <script src="jquery-1.12.4.js"></script>
+	    <script src="index.js"></script>
+	    <script>
+	    	//  第二步 入口函数
+	    	$(function () {
+	    		
+	    		// 第三步 具体功能实现
+
+	    			// 分析思路：
+	    				/*前两个按钮 都是移动所有的option的
+	    				点击第一个按钮 从左 往 右  
+	    					先获取左侧的所有的option 然后把这些元素添加到（append）右侧select中
+	    				点击第二个按钮 从右往左*/
+
+	    				// 点击第三按钮 让左侧被选中的option 移到右侧select中
+	    				// 点击第四按钮 让右侧被选中的option 移到左侧select中
+	    			// 第一个按钮 单击之后 
+	    			$('#btn-sel-all').click(function () {
+	    				$('#tar-city').append( $('#src-city>option') );
+
+	    				// 把右边的被选中的元素取消被选中 （取消selected属性）
+	    				$('#tar-city>option:selected').removeAttr('selected');
+	    			})
+
+	    			// 第二个按钮 单击之后 
+	    			$('#btn-sel-none').click(function () {
+	    				$('#src-city').append( $('#tar-city>option') );
+
+	    				$('#src-city>option:selected').removeAttr('selected');
+	    			})	
+
+	    			$('#btn-sel').click(function () {
+	    				// 找到左侧的被选中的option
+	    				var eles = $('#src-city>option:selected');
+	    				// 移动到右侧select中
+	    				$('#tar-city').append(eles);
+	    				// 把右侧的被选中option 移除选中属性
+	    				$('#tar-city>option:selected').removeAttr('selected');
+
+	    			})
+
+
+	    			$('#btn-back').click(function () {
+	    				
+	    				var eles = $('#tar-city>option:selected');
+
+	    				$('#src-city').append(eles);
+
+	    				$('#src-city>option:selected').removeAttr('selected');
+
+	    			})
+	    	})
+	    </script>
+</head>
+<body>
+		<h1>城市选择：</h1>
+		<select id="src-city" name="src-city" multiple="">
+		    <option value="1">北京</option>
+		    <option value="2">上海</option>
+		    <option value="3">深圳</option>
+		    <option value="4">广州</option>
+		    <option value="5">西红柿</option>
+		</select>
+		<div class="btn-box">
+		    <!--实体字符-->
+		    <button id="btn-sel-all"> &gt;&gt; </button>
+		    <button id="btn-sel-none"> &lt;&lt; </button>
+		    <button id="btn-sel"> &gt;</button>
+		    <button id="btn-back"> &lt; </button>
+		</div>
+		<select id="tar-city" name="tar-city" multiple=""></select>
+</body>
+</html>

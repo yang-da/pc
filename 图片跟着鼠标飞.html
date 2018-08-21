@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        img{
+            position: absolute;
+        }
+        body{
+            height: 2000px;
+        }
+
+    </style>
+</head>
+<body>
+    <img src="images/tianshi.gif" alt="" id="img">
+
+    <script>
+        var img=document.getElementById('img');
+        document.onmousemove=function(e){
+            img.style.top=e.pageY+'px';
+            img.style.left=e.pageX+'px';
+        }
+    </script>
+</body>
+</html>

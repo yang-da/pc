@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        ul{
+            list-style: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" id='btn' value="创建列表">
+    <input type="button" id="btn2" value="创建p">
+    <div id="dv"></div>
+
+    <script>
+        var names=['乔峰', '郭靖', '黄蓉', '张无忌', '段飞', '赵敏', '东方不败', '尹志平'];
+        var btn=document.getElementById('btn');
+        var dv=document.getElementById('dv');
+        btn.onclick=function(){
+            var str='<ul>';
+            for(var i=0;i<names.length;i++){
+                str+='<li>'+names[i]+'</li>';
+            }
+            str+='</ul>';
+            dv.innerHTML=str;
+        }
+    </script>
+    <script>
+        var btn2=document.getElementById('btn2');
+        btn2.onclick=function(){
+            var p=document.createElement('p');
+            p.innerText='好饿啊';
+            dv.appendChild(p);
+        }
+    </script>
+</body>
+</html>

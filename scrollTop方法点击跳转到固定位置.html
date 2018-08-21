@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box {
+			width: 100px;
+			height: 200px;
+			border: 1px solid blue;
+			overflow: scroll;
+		}
+	</style>
+	<script src="jq.js"></script>
+	<script>
+		$(function () {
+			
+			// 文档的垂直方向滚动过的距离
+			
+
+			//window.onscroll = function(){} 
+			$(window).scroll(function () {
+				
+				// console.log(1111);
+
+				var result = $(window).scrollTop();
+				console.log(result);
+
+
+
+			})
+			$(document).click(function () {
+				 // $(window).scrollTop(600);
+				 $('#box').scrollTop(150);
+			})
+
+			$('#box').scroll(function () {
+				console.log( $(this).scrollTop() );
+			})
+		})
+	</script>
+</head>
+<body style="height: 2000px">
+	<input type="button" value="单击设置文档的scrollTop为600">
+	<div id="box">
+		<p>pppppppppp</p>
+		<p>pppppppppp</p>
+		<p>pppppppppp</p>
+		<p>pppppppppp</p>
+		<p>pppppppppp</p>
+		<p>pppppppppp</p>
+		<p>pppppppppp</p>
+		<p>pppppppppp</p>
+		<p>pppppppppp</p>
+		<p>pppppppppp</p>
+		<p>pppppppppp</p>
+		<p>pppppppppp</p>
+	</div>
+</body>
+</html>

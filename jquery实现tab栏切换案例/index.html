@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	        * {
+	            margin: 0;
+	            padding: 0;
+	        }
+	        ul {
+	            list-style: none;
+	        }
+	        .wrapper {
+	            width: 1000px;
+	            height: 475px;
+	            margin: 0 auto;
+	            margin-top: 100px;
+	        }
+	
+	        .tab {
+	            border: 1px solid #ddd;
+	            border-bottom: 0;
+	            height: 36px;
+	            width: 320px;
+	        }
+	
+	        .tab li {
+	            position: relative;
+	            float: left;
+	            width: 80px;
+	            height: 34px;
+	            line-height: 34px;
+	            text-align: center;
+	            cursor: pointer;
+	            border-top: 4px solid #fff;
+	        }
+	
+	        .tab span {
+	            position: absolute;
+	            right: 0;
+	            top: 10px;
+	            background: #ddd;
+	            width: 1px;
+	            height: 14px;
+	            overflow: hidden;
+	        }
+	
+	        .products {
+	            width: 1002px;
+	            border: 1px solid #ddd;
+	            height: 476px;
+	        }
+	
+	        .products .main {
+	            float: left;
+	            display: none;
+	        }
+	
+	        .products .main.selected {
+	            display: block;
+	        }
+	
+	        .tab li.active {
+	            border-color: red;
+	            border-bottom: 0;
+	        }
+	
+	    </style>
+	    <script src="../jq.js"></script>
+	    <script>
+	    	
+	    	$(function () {
+	    		// 具体功能实现
+	    			// 分析思路： 给所有的ul里面的li 添加鼠标移上事件 
+	    			// 移到哪个li身上 让当前的li添加上红条样式 (添加类名)
+	    			//      应该让对应的下面的div 显示（添加类） 让别的div都隐藏
+
+	    			// 事件源 li  事件类型 mouseover
+	    			$('.tab>li').mouseover(function () {
+	    				// 让当前的li添加上红条样式 (添加类名) 让其他兄弟们移除类
+	    				$(this).addClass('active').siblings().removeClass('active');
+						// 让对应的下面的div 显示（添加类） 让它的其他兄弟们 都隐藏
+	    				// $('.products>div').eq( $(this).index() ).show().siblings().hide();
+	    				$('.products>div').eq( $(this).index() ).addClass('selected').siblings().removeClass('selected');
+	    			})
+	    	})
+
+	    </script>
+</head>
+<body>
+	<div class="wrapper">
+		    <ul class="tab">
+		        <li class="tab-item active">国际大牌<span>◆</span></li>
+		        <li class="tab-item">国妆名牌<span>◆</span></li>
+		        <li class="tab-item">清洁用品<span>◆</span></li>
+		        <li class="tab-item">男士精品</li>
+		    </ul>
+		    <div class="products">
+		        <div class="main selected">
+		            <a href="###"><img src="imgs/guojidapai.jpg" alt=""></a>
+		        </div>
+		        <div class="main">
+		            <a href="###"><img src="imgs/guozhuangmingpin.jpg" alt=""></a>
+		        </div>
+		        <div class="main">
+		            <a href="###"><img src="imgs/qingjieyongpin.jpg" alt=""></a>
+		        </div>
+		        <div class="main">
+		            <a href="###"><img src="imgs/nanshijingpin.jpg" alt=""></a>
+		        </div>
+		    </div>
+		</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        ul{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="变色" id="btn">
+    <ul id="ul">
+        <li>m416</li>
+        <li>m16a4</li>
+        <li>ak47</li>
+        <li>m249</li>
+        <li>awm</li>
+        <li>kar98k</li>
+        <li>m24</li>
+    </ul>
+<script>
+    var btn=document.getElementById('btn');
+    btn.onclick=function(){
+        var ul=document.getElementById('ul');
+        //获取到每一个li
+        var list=ul.getElementsByTagName('li');
+        //遍历每一个类
+        for(var i=0;i<list.length;i++){
+            list[i].style.backgroundColor=i%2==0?'red':'skyblue';
+        }
+    };
+</script>
+
+</body>
+</html>

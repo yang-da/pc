@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        img{
+            width: 100px;
+            height: 125px;
+        }
+        div{
+            position: absolute;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="摇起来" id="btn">
+    <input type="button" value="停止" id="btn2">
+
+    <div id="dv">
+        <img src="images/111.jpg" alt="">
+        <img src="images/222.jpg" alt="">
+    </div>
+
+    <script>
+        var setId=null;
+        var btn=document.getElementById('btn');
+        var btn2=document.getElementById('btn2');
+        var dv=document.getElementById('dv');
+
+        btn.onclick=function(){
+            setId=setInterval(function(){
+                //随机生成横纵坐标
+                var x=parseInt(Math.random()*100)+1;
+                var y=parseInt(Math.random()*100)+1;
+                //设置left和top属性值
+                dv.style.left=x+'px';
+                dv.style.top=y+'px';
+            },20);
+        }
+        //点击按钮停止定时器
+        btn2.onclick=function(){
+            clearInterval(setId);
+        }
+    </script>
+</body>
+</html>

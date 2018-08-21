@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        ul{
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+    <ul id="ul">
+        <li>m416</li>
+        <li>m16a4</li>
+        <li>ak47</li>
+        <li>m249</li>
+        <li>awm</li>
+        <li>kar98k</li>
+        <li>m24</li>
+    </ul>
+
+    <script>
+        var ul=document.getElementById('ul');
+        var list=ul.getElementsByTagName('li');
+
+        for(var i=0;i<list.length;i++){
+            //鼠标进入事件
+            list[i].onmouseover=function(){
+                this.style.backgroundColor='skyblue';
+            };
+            //鼠标离开事件
+            list[i].onmouseout=function(){
+                this.style.backgroundColor='';
+            }
+        }
+    </script>
+</body>
+</html>

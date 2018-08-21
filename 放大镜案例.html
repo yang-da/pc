@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      width: 350px;
+      height: 350px;
+      margin: 100px;
+      border: 1px solid #ccc;
+      position: relative;
+    }
+
+    .big {
+      width: 400px;
+      height: 400px;
+      position: absolute;
+      top: 0;
+      left: 360px;
+      border: 1px solid #ccc;
+      overflow: hidden;
+      display: none;
+    }
+
+    .mask {
+      width: 175px;
+      height: 175px;
+      background: rgba(255, 255, 0, 0.4);
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      cursor: move;
+      display: none;
+    }
+
+    .small {
+      position: relative;
+    }
+    </style>
+</head>
+<body>
+    <div class="box" id="box">
+      <div class="small"><!--小层-->
+        <img src="images/small.png" width="350" alt=""/>
+        <div class="mask"></div><!--遮挡层-->
+      </div><!--小图-->
+
+      <div class="big"><!--大层-->
+        <img src="images/big.jpg" width="800" alt=""/><!--大图-->
+      </div><!--大图-->
+    </div>
+    <script>
+        //获取最外面的div
+        var box=document.getElementById('box');
+        //获取小图的div
+        var small=box.children[0];
+        //获取遮挡层的div
+        var mask=small.children[1];
+        //获取大图的div
+        var big=box.children[1];
+        //获取大图
+        var bigImg=big.children[0];
+        
+        //为small注册鼠标进入事件，显示遮挡的idv和大图的div
+        small.onmouseover=function(){
+            mask.style.display='block';
+            big.style.display='block';
+        }
+        small.onmouseout=function(){
+            mask.style.display='none';
+            big.style.display='none';
+        }
+        //鼠标移动，遮挡层跟着鼠标动
+        small.onmousemove=function(e){
+            //
+            var x=e.clientX-mask.offsetWidth/2;
+            var y=e.clientY-mask.offsetHeight/2;
+
+            x=x-100;
+            y=y-100;
+
+            //横坐标的最大值 最小值的判断
+            x=x<0?0:x;
+            //
+            x=x>small.offsetWidth-mask.offsetWidth?small.offsetWidth-mask.offsetWidth:x;
+
+            y=y<0?0:y;
+            y=y>small.offsetHeight-mask.offsetHeight?small.offsetHeight-mask.offsetHeight:y;
+
+            //遮挡层的div的left和top设置
+            mask.style.left=x+'px';
+            mask.style.top=y+'px';
+
+            var bigImgMaxMoveX=bigImg.offsetWidth-big.offsetWidth;
+            //大图的移动距离横坐标
+            var maxX=x*bigImgMaxMoveX/(small.offsetWidth-mask.offsetWidth);
+            //大图的移动距离纵坐标
+            var maxY=y*bigImgMaxMoveX/(small.offsetWidth-mask.offsetWidth);
+
+            bigImg.style.marginLeft=-maxX+'px';
+            bigImg.style.marginTop=-maxY+'px';
+
+        };
+
+
+    </script>
+</body>
+</html>

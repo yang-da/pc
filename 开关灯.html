@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .cls{
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="开关灯" id="btn">
+    <script>
+        document.getElementById('btn').onclick=function(){
+            //判断类名是否有cls的类，有的话为空，没有的话设置为cls
+            if(document.body.className=='cls'){
+                document.body.className='';
+            }else{
+                document.body.className='cls';
+            }
+        }
+    </script>
+</body>
+</html>

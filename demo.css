@@ -1,0 +1,83 @@
+html{
+    font-size: 10px;
+    background-color: #ECECEC;
+}
+input{
+    width: 100%;
+    height: 3.5rem;
+    padding-left: 0.8rem;
+    border: 0;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    font-size: 1.6rem;
+}
+.name{
+    background-color: #fff;
+    height: 3.5rem;
+    line-height: 3.5rem;
+    font-size: 1.6rem;
+    display: inline-block;
+    width: 100%;
+    padding-left: 0.8rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+}
+.upload{
+    width: 100%;
+    height: 15rem;
+    border: 0.1rem solid red;
+    background-color: #fff;
+}
+.upload span{
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+div{
+    font-size: 1.6rem;
+}
+.image{
+    background-color: #fff;
+    height: 3.5rem;
+    line-height: 3.5rem;
+    font-size: 1.6rem;
+    width: 100%;
+    padding-left: 0.8rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.6rem;
+}
+.plus{
+    margin-top: 1rem;
+    margin-left: 1rem;
+    width: 7.7rem;
+    height: 7.7rem;
+    border: 0.15rem solid #ccc;
+    position: relative;
+    cursor: pointer;
+}
+.plus .x{
+    position: absolute;
+    height: 0.15rem;
+    width: 5rem;
+    background-color: #ccc;
+    left: 1rem;
+    top: 3.8rem;
+}
+.plus .y{
+    height: 5rem;
+    width: 0.15rem;
+    background-color: #ccc;
+    position: absolute;
+    left: 3.6rem;
+    top: 1rem;
+}
+button{
+    width: 100%;
+    padding: 1rem;
+    border: 0;
+    margin-top: 2rem;
+    background-image: -moz-linear-gradient( 90deg, rgb(252,70,25) 0%, rgb(252,78,36) 48%, rgb(254,115,81) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(252,70,25) 0%, rgb(252,78,36) 48%, rgb(254,115,81) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(252,70,25) 0%, rgb(252,78,36) 48%, rgb(254,115,81) 100%);
+    color:#fff;
+}
+

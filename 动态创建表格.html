@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" id="btn" value="创建表格">
+    <div id="dv"></div>
+    <script>
+        var json=[
+            {"name":"百度","href":"http://www.baidu.com"},
+            {"name":"网易","href":"http://www.163.com"}
+        ];
+
+        var btn=document.getElementById('btn');
+        var dv=document.getElementById('dv');
+        btn.onclick=function(){
+
+            //判断只能创建一个，有则删除，无则创建。
+            if(!document.getElementById('btn2')){
+
+                var table=document.createElement('table');
+                table.id='btn2';
+
+                table.border='1';
+                dv.appendChild(table);
+
+                for(var i=0;i<json.length;i++){
+                    var dt=json[i];
+
+                    var tr=document.createElement('tr');
+                    table.appendChild(tr);
+
+                    var td1=document.createElement('td');
+                    tr.appendChild(td1);
+                    td1.innerText=dt.name;
+
+                    var td2=document.createElement('td');
+                    tr.appendChild(td2);
+                    td2.innerHTML='<a href="'+dt.href+'">'+dt.name+'</a>';
+                }  
+            }
+
+            
+
+        }
+    </script>
+</body>
+</html>

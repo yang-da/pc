@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box {
+			/*width: 200px;*/
+			/*height: 100px;*/
+			background-color: pink;
+			position: absolute;
+			left: 100px;
+			top: 100px;
+		}
+	</style>
+	<script src="jquery-1.12.4.js"></script>
+	<script>
+		$(function () {
+			
+			//拖拽思路
+			//  鼠标按下事件 mousedown
+
+					// 鼠标x坐标  -  盒子距离文档外层的左侧偏移量 = 鼠标距离盒子的左侧的距离
+					// 鼠标y坐标  -  盒子距离文档外层的顶部偏移量 = 鼠标距离盒子的顶部的距离
+
+			//  鼠标移动事件 mousemove
+					//让盒子跟着走  
+			//  鼠标弹起事件 mouseup
+				// 取消移动事件
+
+			// 鼠标在div身上按下
+			$('#box').mousedown(function (ev) {
+				//鼠标距离盒子的左侧的距离
+				var disX = ev.offsetX;
+				//鼠标距离盒子的顶部的距离
+				var disY = ev.offsetY;
+				// 鼠标在文档下移动 
+				$(document).mousemove(function (ev) {
+					
+					$('#box').css({
+						// left值  等于  鼠标距离文档最左侧的距离（包含滚动条） - 固定距离
+						left: ev.pageX - disX,
+						// top值  等于  鼠标距离文档最顶部的距离（包含滚动条） - 固定距离
+						top: ev.pageY - disY
+					})
+
+				});
+				// 给文档添加鼠标弹起事件
+				$(document).mouseup(function () {
+					// 取消移动事件
+					$(this).off('mousemove');
+				})
+
+				// 阻止图片的拖拽的默认行为
+				return false;
+			})
+
+
+		})
+	</script>
+</head>
+<body style="height: 2000px;">
+	<!-- <div id="box"></div> -->
+	<img src="1-small.jpg"  id="box">
+</body>
+</html>

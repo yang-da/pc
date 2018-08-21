@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div{
+            width: 300px;
+            height: 250px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="dv"></div>
+    <input type="button" value="渐变" id="btn">
+
+    <script>
+        
+        var btn=document.getElementById('btn');
+        var dv=document.getElementById('dv');
+
+        btn.onclick=function(){
+            var opacity=10;
+            var setId=setInterval(function(){
+                opacity--;
+                //判断如果opacity小于0；清理定时器
+                if(opacity<=0){
+                    clearInterval(setId);
+                }
+                dv.style.opacity=opacity/10;
+            },100);
+        };
+    </script>
+</body>
+</html>

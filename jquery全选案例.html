@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .wrap {
+            width: 300px;
+            margin: 100px auto 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #c0c0c0;
+        }
+
+        th,
+        td {
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #09c;
+            font: bold 16px "微软雅黑";
+            color: #fff;
+        }
+
+        td {
+            font: 14px "微软雅黑";
+        }
+
+        tbody tr {
+            background-color: #f0f0f0;
+        }
+
+        tbody tr:hover {
+            cursor: pointer;
+            background-color: #fafafa;
+        }
+    </style>
+    <script src="jq.js"></script>
+    <script>
+    	$(function () {
+    		
+    		// 分析思路
+    			// 1   单击全选按钮 如果全选按钮打勾了 则下面的框们 全被选中  如果全选没打勾 则下面全部不被选中
+    			// 2   下面的所有的框门 都被选中 则全选选中  如果有一个没有选中 则全选不选中
+
+    			// 给全选按钮 添加单击事件
+    			$('#j_cbAll').click(function () {
+    				// var  bool = $(this).prop('checked')
+    				// $('#j_tb input').prop('checked',bool)
+    				 $('#j_tb input').prop('checked', $(this).prop('checked'));
+    			});
+
+    			// 给下面把的框们添加单击事件 单击之后 进行判断 如果打勾够4个了 则全选选中 否则全选不选
+    			$('#j_tb input').click(function () {
+    				
+    				var alllength = $('#j_tb input').length;  // 4
+    				// 选择那些被选中的input
+    				var checkLength = $('#j_tb input:checked').length;
+    				console.log(alllength,checkLength);
+
+    				// 判断 如果打勾的input的个数和总个数相等啦
+    				if(alllength === checkLength) {
+    					//  让全选选中
+    					$('#j_cbAll').prop('checked',true);
+    				}else {
+    					// 让全选不选中
+    					$('#j_cbAll').prop('checked',false);
+    				}
+    				// =========上面是简化前的代码==================================
+    				// $('#j_cbAll').prop('checked',alllength === checkLength);
+
+    				// 最后简化
+    				// $('#j_cbAll').prop('checked',$('#j_tb input').length ===$('#j_tb input:checked').length);
+    			})
+    	})
+    </script>
+</head>
+<body>
+	<div class="wrap">
+    <table>
+        <thead>
+        <tr>
+            <th>
+                <input type="checkbox" id="j_cbAll">
+            </th>
+            <th>课程名称</th>
+            <th>所属学院</th>
+        </tr>
+        </thead>
+        <tbody id="j_tb">
+        <tr>
+            <td>
+                <input type="checkbox">
+            </td>
+            <td>JavaScript</td>
+            <td>前端与移动开发学院</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox">
+            </td>
+            <td>css</td>
+            <td>前端与移动开发学院</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox">
+            </td>
+            <td>html</td>
+            <td>前端与移动开发学院</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox">
+            </td>
+            <td>jQuery</td>
+            <td>前端与移动开发学院</td>
+        </tr>
+        </tbody>
+    </table>
+ 
+</div>
+</body>
+</html>

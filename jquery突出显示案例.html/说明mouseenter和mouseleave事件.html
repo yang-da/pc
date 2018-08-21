@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		
+		#box {
+			width: 400px;
+			height: 400px;
+			background-color: red;
+			margin: 50px;
+			overflow: hidden;
+		}
+		#box2 {
+			width: 200px;
+			height: 200px;
+			background-color: green;
+			margin: 150px;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="box2"></div>
+	</div>
+</body>
+<script>
+	
+	document.getElementById('box').onmouseenter = function () {
+		console.log('box的鼠标移上事件触发了');
+	}
+
+	document.getElementById('box').onmouseleave = function () {
+		console.log('box的鼠标移出事件触发了');
+	}
+
+	// document.getElementById('box2').onmouseenter = function () {
+	// 	console.log('box2的鼠标移上事件触发了');
+	// }
+
+	// document.getElementById('box2').onmouseleave = function () {
+	// 	console.log('box2的鼠标移出事件触发了');
+	// }
+
+// box的鼠标移上事件触发了  正常触发
+
+
+
+//  box的鼠标移出事件触发了  当你进入绿色box2盒子身上的时候 它认为你离开红色box盒子了
+
+//  box2的鼠标移上事件触发了  你进入了box2 所以会触发
+//  box的鼠标移上事件触发了  这是因为事件冒泡导致的  
+
+
+
+//  box2的鼠标移出事件触发了  正常 
+// box的鼠标移出事件触发了   事件冒泡导致的
+//  box的鼠标移上事件触发了  它认为你移到红色box身上啦
+
+
+
+//box的鼠标移出事件触发了  正常
+
+// 总结： mouseover 和mouseout 事件  穿过被选元素的子元素的时候 同样会触发  并且它们会发生事件冒泡
+// 	   mouseenter 和mouseleave 事件 穿过被选元素的子元素的时候 不会触发  并且不会发生事件冒泡  比较干净
+</script>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    #txt {
+      width: 400px;
+      height: 30px;
+      border: 1px solid red;
+      font-size: 25px;
+    }
+    </style>
+</head>
+<body>
+    <div id="dv">
+        <input type="text" value="" id="txt"><input type="button" value="百度一下">
+    </div>
+
+    <script>
+        var arr=['华为手机','小米手机','苹果手机'];
+        var txt=document.getElementById('txt');
+        var dv=document.getElementById('dv');
+        //键盘抬起事件
+        txt.onkeyup=function(){
+            if(!document.getElementById('dv2')){
+                //创建一个div标签
+                var div=document.createElement('div');
+                dv.appendChild(div);
+                //设置div的样式
+                div.style.width='400px';
+                div.style.height='200px';
+                div.style.border='1px solid red';
+                div.id='dv2';
+
+                //遍历数组
+                for(var i=0;i<arr.length;i++){
+                    //创建p标签
+                    var p=document.createElement('p');
+
+                    div.appendChild(p);
+                    p.innerHTML=arr[i];
+                    p.style.margin='0';
+                    p.style.padding='0';
+                    p.style.cursor='pointer';
+                    p.style.marginLeft='5px';
+                    p.style.marginTop='5px';
+
+                    //鼠标进入事件
+                    p.onmouseover=function(){
+                        this.style.background='yellow';
+                    }
+                    //鼠标离开事件
+                    p.onmouseout=function(){
+                        this.style.background='';
+                    }
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

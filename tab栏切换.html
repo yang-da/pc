@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    .box {
+      width: 400px;
+      height: 300px;
+      border: 1px solid #ccc;
+      margin: 100px auto;
+      overflow: hidden;
+    }
+
+    .hd {
+      height: 45px;
+    }
+
+    .hd span {
+      display: inline-block;
+      width: 90px;
+      background-color: pink;
+      line-height: 45px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .hd span.current {
+      background-color: skyblue;
+    }
+
+    .bd li {
+      height: 255px;
+      background-color: skyblue;
+      display: none;
+    }
+
+    .bd li.current {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+    <div class="box" id="box">
+      <div class="hd">
+        <span class="current">体育</span>
+        <span>娱乐</span>
+        <span>新闻</span>
+        <span>综合</span>
+      </div>
+      <div class="bd">
+        <ul>
+          <li class="current">我是体育模块</li>
+          <li>我是娱乐模块</li>
+          <li>我是新闻模块</li>
+          <li>我是综合模块</li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+        var box=document.getElementById('box');
+        var hd=box.getElementsByTagName('div')[0];
+        var bd=box.getElementsByTagName('div')[0];
+        var spans=document.getElementsByTagName('span');
+        var list=document.getElementsByTagName('li');
+
+        //遍历所有span注册点击事件
+        for(var i=0;i<spans.length;i++){
+            spans[i].setAttribute('index',i);
+            spans[i].onclick=function(){
+                for(var k=0;k<spans.length;k++){
+                    //移除每个span的class属性
+                    spans[k].removeAttribute('class');
+                }
+                this.className='current';
+
+                //把所有li的样式移除掉
+                for(var j=0;j<list.length;j++){
+                    list[j].removeAttribute('class');
+                }
+                //获取当前点击的span标签的自定义属性的值  索引值
+                var index=this.getAttribute('index');
+                //设置点击的span对应的li显示
+                list[index].className='current';
+                
+            }
+        }
+
+    </script>
+</body>
+</html>

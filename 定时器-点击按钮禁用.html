@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <textarea name="" id="" cols="30" rows="10" readonly="readonly">你点啊，你点不动的!等5秒吧
+    </textarea>
+    <br>
+    <input type="button" value="请仔细阅读协议(5)" id="btn" disabled="disabled">
+    
+    <script>
+        //每过一秒就重新设置按钮中的value
+        var i=5;
+        var btn=document.getElementById('btn');
+        var setId=setInterval(function(){
+            i--;
+            //设置按钮的value
+            btn.value='请仔细阅读协议('+i+')';
+            if(i<=0){
+                //清理定时器
+                clearInterval(setId);
+                btn.value='同意';
+                btn.disabled=false;
+            }
+        },1000)
+    </script>
+
+</body>
+</html>

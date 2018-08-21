@@ -1,0 +1,19 @@
+input {
+	width: 60px;
+	height: 30px;
+	background-color: orange;
+	border: none;
+	outline: none;
+}
+input.active {
+	background-color: red;
+}
+div div {
+	width: 380px;
+	height: 300px;
+	border: 1px solid black;
+	display: none;
+	text-align: center;
+	line-height: 300px;
+	font-size: 50px;
+}
